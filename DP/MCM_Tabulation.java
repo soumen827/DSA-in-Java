@@ -1,0 +1,29 @@
+public class MCM_Tabulation {
+    public static void main(String[] args) {
+        int[] arr ={1,2,3,4,2};
+        System.out.println(mcm(arr));
+    }
+
+    private static int mcm(int[]arr) {
+       int n = arr.length;
+        int[][] dp = new int[n-1][n-1];
+        for(int i=n-2;i>=0;i--){
+            for(int j= 0;j<=n-2;j++){
+                if(i>=j){
+                    dp[i][j] = 0;
+                    continue;
+                }
+                int mincost = Integer.MAX_VALUE;
+        
+                for(int k = i; k<j; k++){
+                    int x = arr[i] * arr[j+1] * arr[k+1];
+                    int totalCost = dp[i][k] + dp[k+1][j] + x;
+                    mincost = Math.min(mincost,totalCost);
+                }
+                 dp[i][j] = mincost;
+            }
+        }
+        return dp[0][n-2];
+
+    }
+}
