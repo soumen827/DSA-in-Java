@@ -37,6 +37,3 @@ class Solution {
         return ans;
     }
 }
-
-    }
-}
