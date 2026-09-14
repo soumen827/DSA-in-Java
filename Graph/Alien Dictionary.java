@@ -11,20 +11,17 @@ class Solution{
         Queue<Integer> q=new LinkedList<>();
         
         for(int i=0;i<V;i++){
-            if(indegree[i]==0){
-                q.add(i);
-            }
+            if(indegree[i]==0)  q.add(i);
+          
         }
         while(!q.isEmpty()){
             int node=q.remove();
             ans.add(node);
-
+            
             for(int ele:adj.get(node)){
                 indegree[ele]--;
-
-                if(indegree[ele]==0){
-                    q.add(ele);
-                }
+                if(indegree[ele]==0)  q.add(ele);
+                
             }
         }
         return ans;
